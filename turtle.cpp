@@ -57,6 +57,7 @@ void turtle_t::set_dir(const double _dir)
 void turtle_t::set_col(const color_t _col)
 { 
 	col = _col;
+	glColor3d(_col.r, _col.g, _col.b);
 }
 
 void turtle_t::set_col(const double _r, const double _g, const double _b)
@@ -64,6 +65,7 @@ void turtle_t::set_col(const double _r, const double _g, const double _b)
 	col.r = _r;
 	col.g = _g;
 	col.b = _b;
+	glColor3d(col.r, col.g, col.b);
 }
 
 void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
