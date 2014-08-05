@@ -104,8 +104,8 @@ void turtle_t::forward(const double _dist)
 void turtle_t::back(const double _dist)   
 { 
 	double prex = pos.x, prey = pos.y;
-	pos.x += -_dist*cos(-dir);
-	pos.y += -_dist*sin(-dir);
+	pos.x += -_dist*cos(dir*(pi/180));
+	pos.y += -_dist*sin(dir*(pi/180));
 	glBegin(GL_LINES);
 		glVertex2d(prex, prey);
 		glVertex2d(pos.x, pos.y);
@@ -116,8 +116,8 @@ void turtle_t::back(const double _dist)
 void turtle_t::forward_move(const double _dist)
 { 
 	double prex = pos.x, prey = pos.y;
-	pos.x += _dist*cos(-dir);
-	pos.y += _dist*sin(-dir);
+	pos.x += _dist*cos(dir*(pi/180));
+	pos.y += _dist*sin(dir*(pi/180));
 
 }
 
