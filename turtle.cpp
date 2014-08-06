@@ -71,6 +71,7 @@ void turtle_t::set_col(const double _r, const double _g, const double _b)
 void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
 { 
 	glClearColor(_r, _g, _b, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void turtle_t::scale(const double _s)
@@ -126,8 +127,8 @@ void turtle_t::forward_move(const double _dist)
 void turtle_t::backward_move(const double _dist)
 { 
 	double prex = pos.x, prey = pos.y;
-	pos.x += -_dist*cos(-dir);
-	pos.y += -_dist*sin(-dir);
+	pos.x += -_dist*cos(dir*(pi/180));
+	pos.y += -_dist*sin(dir*(pi/180));
 }
 void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 { 
