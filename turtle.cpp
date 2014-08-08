@@ -134,91 +134,94 @@ void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 { 
 	for(int i = 0; i < _n; i++){
 		for(int j = 0; j < _replist.size(); j++){
-//			int b = 0;
-			switch ((*_replist[j]).cname){
-				case F:
-					{
-						turtle_fwd_t* temp = static_cast<turtle_fwd_t*>(_replist[j]);
-						forward((*temp).dist);
-						break;
-					}
-				case B:
-					{
-				 		turtle_bck_t* temp = static_cast<turtle_bck_t*>(_replist[j]);		
-						back((*temp).dist);
-						break;
-					}
-				case L:
-					{
-						turtle_lft_t* temp = static_cast<turtle_lft_t*>(_replist[j]);
-						turn_left((*temp).angl);
-						break;
-					}
-				case R:
-					{
-						turtle_rht_t* temp = static_cast<turtle_rht_t*>(_replist[j]);
-						turn_right((*temp).angl);
-						break;
-					}
-				case RESET:
-					{
-						turtle_rst_t* temp = static_cast<turtle_rst_t*>(_replist[j]);
-						reset();
-						break;
-					}
-				case CLS:
-					{
-						turtle_cls_t* temp = static_cast<turtle_cls_t*>(_replist[j]);
-						clear();
-						break;
-					}
-				case MF:
-					{
-						turtle_mfwd_t* temp = static_cast<turtle_mfwd_t*>(_replist[j]);
-						forward_move((*temp).dist);
-						break;
-					}
-				case MB:
-					{
-						turtle_mbck_t* temp = static_cast<turtle_mbck_t*>(_replist[j]);
-						backward_move((*temp).dist);
-						break;
-					}
-				case COL:
-					{
-						turtle_col_t* temp = static_cast<turtle_col_t*>(_replist[j]);
-						set_col((*temp).r, (*temp).g, (*temp).b);
-						break;
-					}
-				case BGCOL:
-					{
-						turtle_bgcol_t* temp = static_cast<turtle_bgcol_t*>(_replist[j]);
-						set_bgcol((*temp).r, (*temp).g, (*temp).b);
-						break;
-					}
-				case SCALE:
-					{
-						turtle_scale_t* temp = static_cast<turtle_scale_t*>(_replist[j]);
-						scale((*temp).s);
-						break;
-					}
-			/*	case ENDREP:
-					b = 1;
-					break;*/
-				case REPEAT:
-					{
-						turtle_rep_t* temp = static_cast<turtle_rep_t*>(_replist[j]);
-						repeat((*temp).times, (*temp).replist);
-						break;
-					}
-//				case BEGIN:
-//				case END:
-
-
-			}
-//			if(b) break;
+			exec(_replist[j]);
 		}
 	}
+////			int b = 0;
+//			switch ((*_replist[j]).cname){
+//				case F:
+//					{
+//						turtle_fwd_t* temp = static_cast<turtle_fwd_t*>(_replist[j]);
+//						forward((*temp).dist);
+//						break;
+//					}
+//				case B:
+//					{
+//				 		turtle_bck_t* temp = static_cast<turtle_bck_t*>(_replist[j]);		
+//						back((*temp).dist);
+//						break;
+//					}
+//				case L:
+//					{
+//						turtle_lft_t* temp = static_cast<turtle_lft_t*>(_replist[j]);
+//						turn_left((*temp).angl);
+//						break;
+//					}
+//				case R:
+//					{
+//						turtle_rht_t* temp = static_cast<turtle_rht_t*>(_replist[j]);
+//						turn_right((*temp).angl);
+//						break;
+//					}
+//				case RESET:
+//					{
+//						turtle_rst_t* temp = static_cast<turtle_rst_t*>(_replist[j]);
+//						reset();
+//						break;
+//					}
+//				case CLS:
+//					{
+//						turtle_cls_t* temp = static_cast<turtle_cls_t*>(_replist[j]);
+//						clear();
+//						break;
+//					}
+//				case MF:
+//					{
+//						turtle_mfwd_t* temp = static_cast<turtle_mfwd_t*>(_replist[j]);
+//						forward_move((*temp).dist);
+//						break;
+//					}
+//				case MB:
+//					{
+//						turtle_mbck_t* temp = static_cast<turtle_mbck_t*>(_replist[j]);
+//						backward_move((*temp).dist);
+//						break;
+//					}
+//				case COL:
+//					{
+//						turtle_col_t* temp = static_cast<turtle_col_t*>(_replist[j]);
+//						set_col((*temp).r, (*temp).g, (*temp).b);
+//						break;
+//					}
+//				case BGCOL:
+//					{
+//						turtle_bgcol_t* temp = static_cast<turtle_bgcol_t*>(_replist[j]);
+//						set_bgcol((*temp).r, (*temp).g, (*temp).b);
+//						break;
+//					}
+//				case SCALE:
+//					{
+//						turtle_scale_t* temp = static_cast<turtle_scale_t*>(_replist[j]);
+//						scale((*temp).s);
+//						break;
+//					}
+//			/*	case ENDREP:
+//					b = 1;
+//					break;*/
+//				case REPEAT:
+//					{
+//						turtle_rep_t* temp = static_cast<turtle_rep_t*>(_replist[j]);
+//						repeat((*temp).times, (*temp).replist);
+//						break;
+//					}
+////				case BEGIN:
+////				case END:
+//
+//
+//			}
+////			if(b) break;
+//		}
+//	}
 
 
 
