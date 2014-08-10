@@ -76,7 +76,7 @@ void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
 
 void turtle_t::scale(const double _s)
 { 
-	glScaled(_s,_s,_s);
+	glScaled(_s,_s,1.0);
 }
 
 void turtle_t::turn_left(const double _angle)    
