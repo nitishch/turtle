@@ -23,18 +23,19 @@
 #include <iostream>
 #include <cstdlib>
 #include <GL/glew.h>
-
+#include <GLFW/glfw3.h>
 #include "turtle.hpp"
 
 void turtle_t::reset(void) 
 { 
 	pos.x = pos.y = 0.0;
 	dir = 0.0;
+	glLoadIdentity();
 }
 
 void turtle_t::clear(void)
 { 
-//	glClearColor(0.0,0.0,0.0,1.0);
+	glClearColor(0.0,0.0,0.0,1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -76,7 +77,8 @@ void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
 
 void turtle_t::scale(const double _s)
 { 
-	glScaled(_s,_s,1.0);
+//	glLoadIdentity();
+	glScaled(1/_s,1/_s,1.0);
 }
 
 void turtle_t::turn_left(const double _angle)    
@@ -129,6 +131,11 @@ void turtle_t::backward_move(const double _dist)
 	double prex = pos.x, prey = pos.y;
 	pos.x += -_dist*cos(dir*(pi/180));
 	pos.y += -_dist*sin(dir*(pi/180));
+}
+
+void turtle_t::sleep(const double s){
+//	glfwSleep(s);
+//	usleep(s*1000);
 }
 void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 { 
@@ -229,6 +236,11 @@ void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 
 void turtle_t::exec(turtle_com_t *com)
 {
+	if (com->cname == PAUSE)
+	{
+		turtle_slp_t* scom = dynamic_cast<turtle_slp_t*>(com);
+		if (scom) sleep(scom->sec);
+	}
   if (com->cname==F)
     {
       turtle_fwd_t* fcom = dynamic_cast<turtle_fwd_t*>(com);

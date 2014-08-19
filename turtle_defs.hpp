@@ -41,7 +41,9 @@ enum turtle_com_name_t
     MB,
     COL,
     BGCOL,
-    SCALE
+	PAUSE, 
+	SCALE
+
   };
    
 //Generic turtle command type
@@ -163,6 +165,11 @@ struct turtle_scale_t : public turtle_com_t
   {cname=_com.cname; s=_com.s; return *this;}
 };
 
+struct turtle_slp_t : public turtle_com_t
+{
+	double sec;
+	turtle_slp_t() {cname = PAUSE; sec = 0.0;}
+};
 
 //Helper Classes
 struct color_t

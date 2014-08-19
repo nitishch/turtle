@@ -25,6 +25,14 @@ std::string parser_t::parse_token(std::istream &_inp, turtle_com_list_t &list)
   std::string token;
   _inp>>token;
 
+  if (token == "PAUSE")
+  {
+	  std::cerr << "Paused for";
+	  turtle_slp_t* com = new turtle_slp_t;
+	  _inp >> com->sec;
+	  std::cerr << com->sec << std::endl;
+	  list.push_back(com);
+  }
   if (token == "F")
     {
       std::cerr<<"Forward: ";

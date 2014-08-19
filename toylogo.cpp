@@ -151,7 +151,8 @@ int main (int argc, char *argv[])
   csX75::initGL();
 
   // Loop until the user closes the window
-  while (glfwWindowShouldClose(window) == 0)
+//  while (glfwWindowShouldClose(window) == 0)
+  for(long long i = 0; i < 100; i++)
     {
        
       // Render here
