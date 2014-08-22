@@ -22,23 +22,63 @@
 #include "render_drawing.hpp"
 
 
-void triline(turtle_t &turt, double length)
+void triline(turtle_t &turt, double length, bool arg)
 {
-   if (length <= 0.01)
+    double newlength = length/4.0;
+   if (length <= 0.03)
    {
       turt.forward(length);
    }
-   else
+   else if (arg)
    {
-     double newlength = length/3.0;
-     triline(turt, newlength);
+    
+     /*triline(turt, newlength);
      turt.turn_left(60);
      triline(turt, newlength);
      turt.turn_right(120);
      triline(turt, newlength);
      turt.turn_left(60);
-     triline(turt, newlength);
+     triline(turt, newlength);*/
+	 triline(turt, newlength,true);
+	 turt.turn_left(60);
+	 triline(turt, newlength,false);
+	 turt.turn_left(60);
+	 triline(turt, newlength,true);
+	 turt.turn_right(60);
+	 triline(turt, newlength,false);
+	 turt.turn_right(60);
+	 triline(turt, newlength,true);
+	 turt.turn_right(60);
+	 triline(turt, newlength,false);
+	 turt.turn_right(60);
+	 triline(turt, newlength,true);
+	 turt.turn_left(60);
+	 triline(turt, newlength,false);
+	 turt.turn_left(60);
+	 triline(turt, newlength,true);
+	 
+	
    }
+   else{
+	 triline(turt, newlength, false);
+	 turt.turn_right(60);
+	 triline(turt, newlength, true);
+	 turt.turn_right(60);
+	 triline(turt, newlength, false);
+	 turt.turn_left(60);
+	 triline(turt, newlength, true);
+	 turt.turn_left(60);
+	 triline(turt, newlength, false);
+	 turt.turn_left(60);
+	 triline(turt, newlength, true);
+	 turt.turn_left(60);
+	 triline(turt, newlength, false);
+	 turt.turn_right(60);
+	 triline(turt, newlength, true);
+	 turt.turn_right(60);
+	 triline(turt, newlength, false);
+}
+	
 }
 
 //Drawing a Koch Snowflake
@@ -46,19 +86,21 @@ void koch(turtle_t &turt, double x)
 {
    turt.reset();
    turt.clear();
-   turt.set_pos(-0.3, 0.5);
-   turt.turn_right(30);
+   //turt.set_pos(-0.3, 0.5);
+   //turt.turn_right(30);
 
-   for (int i = 0; i<3; i++)
+  /* for (int i = 0; i<3; i++)
      {
        triline(turt, x);
        turt.turn_right(120);
-     }
+     }*/
+   turt.set_pos(-1,-1);
+	triline(turt,x, true);
 }
 
 void render_drawing(turtle_t &turt)
 {
-	koch(turt, 1.0);
+	koch(turt, 2.0);
 /*	turt.reset();
 	turt.clear();
 //	turt.set_pos(-0.3, 0.5);
