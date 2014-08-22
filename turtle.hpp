@@ -23,7 +23,7 @@
 #define _TURTLE_HPP_
 
 #include "turtle_defs.hpp"
-
+#include <GLFW/glfw3.h>
 /***************
  The Turtle class
 
@@ -49,6 +49,7 @@
   13. Scale (SCALE s) : Scale the current canvas by s
 
 ****************/
+extern GLFWwindow* window;
 
 class turtle_t
 {

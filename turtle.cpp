@@ -25,7 +25,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "turtle.hpp"
-
+#include <unistd.h>
+GLFWwindow* window;
 void turtle_t::reset(void) 
 { 
 	pos.x = pos.y = 0.0;
@@ -135,7 +136,9 @@ void turtle_t::backward_move(const double _dist)
 
 void turtle_t::sleep(const double s){
 //	glfwSleep(s);
-//	usleep(s*1000);
+//	GLFWwindow* window;
+	glfwSwapBuffers(window);
+	usleep(s*1000);
 }
 void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 { 
@@ -307,6 +310,10 @@ void turtle_t::exec(turtle_com_t *com)
 	  repeat(times, sublist);
 	}
      }
+  else if (com->cname == PAUSE){
+	  turtle_slp_t * slpcom = dynamic_cast<turtle_slp_t*>(com);
+	  if(slpcom) sleep(slpcom->sec);
+  }
   else if ((com->cname==ENDREP) || (com->cname==END) || (com->cname==BEGIN)) 
     {
       //These commands are place holders and used for program structure

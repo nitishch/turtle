@@ -112,7 +112,7 @@ int main (int argc, char *argv[])
   progname=argv[0];
 
   //! The pointer to the GLFW window
-  GLFWwindow* window;
+//  GLFWwindow* window;
 
   //! Setting up the GLFW Error callback
   glfwSetErrorCallback(csX75::error_callback);
@@ -151,18 +151,17 @@ int main (int argc, char *argv[])
   csX75::initGL();
 
   // Loop until the user closes the window
-//  while (glfwWindowShouldClose(window) == 0)
-  for(long long i = 0; i < 100; i++)
+  while (glfwWindowShouldClose(window) == 0)
     {
-       
-      // Render here
-      renderGL();
+     
+    // Render here
+    renderGL();
 
-      // Swap front and back buffers
-      glfwSwapBuffers(window);
-      
-      // Poll for and process events
-      glfwPollEvents();
+    // Swap front and back buffers
+    glfwSwapBuffers(window);
+    
+    // Poll for and process events
+    glfwPollEvents();
     }
 
   glfwDestroyWindow(window);
